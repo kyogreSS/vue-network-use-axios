@@ -1,6 +1,6 @@
 {
   "name": "vue-network-use-axios",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "network for vue , use axios",
   "main": "./dist/index.js",
   "scripts": {
