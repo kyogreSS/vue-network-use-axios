@@ -19,7 +19,7 @@ class NetworkHandler {
         return axios
     }
 
-    async send(key, {bind, params = {}, callBack, errorHandler, urlFragment, query, headers}) {
+    send(key, {bind, params = {}, callBack, errorHandler, urlFragment, query, headers}) {
         if (typeof (key) !== 'string') {
             console.log("you must input a key!")
             return false
@@ -43,7 +43,7 @@ class NetworkHandler {
 
         headers && (newOption.headers = headers)
 
-        await axios({
+        return axios({
             ...newOption,
             params: query,
             data: {...params},
@@ -58,7 +58,7 @@ class NetworkHandler {
             })
     }
 
-    async sendFile(key, formData, {bind, callBack, errorHandler}) {
+    sendFile(key, formData, {bind, callBack, errorHandler}) {
         if (typeof (key) !== 'string') {
             console.log("you must input a key!")
             return false
@@ -73,7 +73,7 @@ class NetworkHandler {
 
         let url = configure.url
 
-        await axios.post(url, formData, {
+        return axios.post(url, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
