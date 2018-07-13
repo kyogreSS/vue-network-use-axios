@@ -19,7 +19,7 @@ class NetworkHandler {
         return axios
     }
 
-    send(key, {params, urlFragment, query, headers}) {
+    send(key, {params, urlFragment, query, headers} = {}) {
         if (typeof (key) !== 'string') {
             console.log("you must input a key!")
             return false
@@ -43,7 +43,7 @@ class NetworkHandler {
 
         headers && (newOption.headers = headers)
 
-        params = params || {}
+        !params && (params = {})
 
         return axios({
             ...newOption,
