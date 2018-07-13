@@ -43,6 +43,8 @@ class NetworkHandler {
 
         headers && (newOption.headers = headers)
 
+        params = params || {}
+
         return axios({
             ...newOption,
             params: query,

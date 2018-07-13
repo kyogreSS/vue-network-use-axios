@@ -47,8 +47,7 @@ var NetworkHandler = function () {
     }, {
         key: 'send',
         value: function send(key, _ref2) {
-            var _ref2$params = _ref2.params,
-                params = _ref2$params === undefined ? {} : _ref2$params,
+            var params = _ref2.params,
                 urlFragment = _ref2.urlFragment,
                 query = _ref2.query,
                 headers = _ref2.headers;
@@ -74,6 +73,8 @@ var NetworkHandler = function () {
             newOption.url && urlFragment && (newOption.url = newOption.url + urlFragment);
 
             headers && (newOption.headers = headers);
+
+            params = params || {};
 
             return (0, _axios2.default)(_extends({}, newOption, {
                 params: query,
