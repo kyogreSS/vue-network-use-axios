@@ -19,7 +19,7 @@ class NetworkHandler {
         return axios
     }
 
-    send(key, {bind, params = {}, callBack, errorHandler, urlFragment, query, headers}) {
+    send(key, {params = {}, urlFragment, query, headers}) {
         if (typeof (key) !== 'string') {
             console.log("you must input a key!")
             return false
@@ -48,17 +48,9 @@ class NetworkHandler {
             params: query,
             data: {...params},
         })
-            .then(function (res) {
-                typeof (callBack) === 'function' && bind && callBack.bind(bind)(res.data, res.status, res.statusText)
-                typeof (callBack) === 'function' && !bind && callBack(res.data, res.status, res.statusText)
-            })
-            .catch(function (err) {
-                err && typeof (errorHandler) === 'function' && bind && errorHandler.bind(bind)(err)
-                err && typeof (errorHandler) === 'function' && !bind && errorHandler(err)
-            })
     }
 
-    sendFile(key, formData, {bind, callBack, errorHandler}) {
+    sendFile(key, formData) {
         if (typeof (key) !== 'string') {
             console.log("you must input a key!")
             return false
@@ -78,14 +70,6 @@ class NetworkHandler {
                 'Content-Type': 'multipart/form-data'
             }
         })
-            .then(function (res) {
-                typeof (callBack) === 'function' && bind && callBack.bind(bind)(res.data, res.status, res.statusText)
-                typeof (callBack) === 'function' && !bind && callBack(res.data, res.status, res.statusText)
-            })
-            .catch(function (err) {
-                err && typeof (errorHandler) === 'function' && bind && errorHandler.bind(bind)(err)
-                err && typeof (errorHandler) === 'function' && !bind && errorHandler(err)
-            })
     }
 
 
